@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32505.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appsuggest", "Appsuggest\Appsuggest.csproj", "{F032E113-0D56-4255-8645-BA81868EBC43}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F032E113-0D56-4255-8645-BA81868EBC43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F032E113-0D56-4255-8645-BA81868EBC43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F032E113-0D56-4255-8645-BA81868EBC43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F032E113-0D56-4255-8645-BA81868EBC43}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F179FD48-0A77-4321-9ABB-9EE6F6C9B541}
+	EndGlobalSection
+EndGlobal
