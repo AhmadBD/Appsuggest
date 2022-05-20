@@ -1,0 +1,579 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="appsuggestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AppImages">
+          <Key>
+            <PropertyRef Name="ImageId" />
+            <PropertyRef Name="AppId" />
+          </Key>
+          <Property Name="ImageId" Type="int" Nullable="false" />
+          <Property Name="AppId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AppPlatforms">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Apps">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Link" Type="varchar(max)" Nullable="false" />
+          <Property Name="LogoLink" Type="varchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CoverImageId" Type="int" Nullable="false" />
+          <Property Name="Tags" Type="nvarchar(max)" />
+          <Property Name="Version" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreationDateTime" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="AppTypeId" Type="int" Nullable="false" />
+          <Property Name="ProviderId" Type="int" Nullable="false" />
+          <Property Name="AppPlatformId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AppTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Link" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Providers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HomePageLink" Type="varchar(max)" />
+          <Property Name="LogoLink" Type="varchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reviews">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="AppId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="AppId" Type="int" Nullable="false" />
+          <Property Name="Rate" Type="int" Nullable="false" />
+          <Property Name="ReviewText" Type="nvarchar(max)" />
+          <Property Name="AppVersion" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreationDateTime" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="UpdateDateTime" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="binary" MaxLength="256" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="char" MaxLength="15" />
+          <Property Name="IsAdmin" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__AppImages__AppId__38996AB5">
+          <End Role="Apps" Type="Self.Apps" Multiplicity="1" />
+          <End Role="AppImages" Type="Self.AppImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apps">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AppImages">
+              <PropertyRef Name="AppId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AppImages__Image__37A5467C">
+          <End Role="Images" Type="Self.Images" Multiplicity="1" />
+          <End Role="AppImages" Type="Self.AppImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Images">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AppImages">
+              <PropertyRef Name="ImageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Apps__CoverImageId__32E0915F">
+          <End Role="Images" Type="Self.Images" Multiplicity="1" />
+          <End Role="Apps" Type="Self.Apps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Images">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Apps">
+              <PropertyRef Name="CoverImageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reviews__AppId__3C69FB99">
+          <End Role="Apps" Type="Self.Apps" Multiplicity="1" />
+          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apps">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reviews">
+              <PropertyRef Name="AppId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reviews__UserId__3B75D760">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reviews">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Apps_AppPlatforms">
+          <End Role="AppPlatforms" Type="Self.AppPlatforms" Multiplicity="1" />
+          <End Role="Apps" Type="Self.Apps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppPlatforms">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Apps">
+              <PropertyRef Name="AppPlatformId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Apps_AppTypes">
+          <End Role="AppTypes" Type="Self.AppTypes" Multiplicity="1" />
+          <End Role="Apps" Type="Self.Apps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Apps">
+              <PropertyRef Name="AppTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Apps_Providers">
+          <End Role="Providers" Type="Self.Providers" Multiplicity="1" />
+          <End Role="Apps" Type="Self.Apps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Providers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Apps">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="appsuggestModelStoreContainer">
+          <EntitySet Name="AppImages" EntityType="Self.AppImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppPlatforms" EntityType="Self.AppPlatforms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Apps" EntityType="Self.Apps" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppTypes" EntityType="Self.AppTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Config" EntityType="Self.Config" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Providers" EntityType="Self.Providers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AppImages__AppId__38996AB5" Association="Self.FK__AppImages__AppId__38996AB5">
+            <End Role="Apps" EntitySet="Apps" />
+            <End Role="AppImages" EntitySet="AppImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AppImages__Image__37A5467C" Association="Self.FK__AppImages__Image__37A5467C">
+            <End Role="Images" EntitySet="Images" />
+            <End Role="AppImages" EntitySet="AppImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Apps__CoverImageId__32E0915F" Association="Self.FK__Apps__CoverImageId__32E0915F">
+            <End Role="Images" EntitySet="Images" />
+            <End Role="Apps" EntitySet="Apps" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reviews__AppId__3C69FB99" Association="Self.FK__Reviews__AppId__3C69FB99">
+            <End Role="Apps" EntitySet="Apps" />
+            <End Role="Reviews" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reviews__UserId__3B75D760" Association="Self.FK__Reviews__UserId__3B75D760">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Reviews" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Apps_AppPlatforms" Association="Self.FK_Apps_AppPlatforms">
+            <End Role="AppPlatforms" EntitySet="AppPlatforms" />
+            <End Role="Apps" EntitySet="Apps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Apps_AppTypes" Association="Self.FK_Apps_AppTypes">
+            <End Role="AppTypes" EntitySet="AppTypes" />
+            <End Role="Apps" EntitySet="Apps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Apps_Providers" Association="Self.FK_Apps_Providers">
+            <End Role="Providers" EntitySet="Providers" />
+            <End Role="Apps" EntitySet="Apps" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="appsuggestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="appsuggestEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AppPlatforms" EntityType="appsuggestModel.AppPlatform" />
+          <EntitySet Name="Apps" EntityType="appsuggestModel.App" />
+          <EntitySet Name="AppTypes" EntityType="appsuggestModel.AppType" />
+          <EntitySet Name="Configs" EntityType="appsuggestModel.Config" />
+          <EntitySet Name="Images" EntityType="appsuggestModel.Image" />
+          <EntitySet Name="Providers" EntityType="appsuggestModel.Provider" />
+          <EntitySet Name="Reviews" EntityType="appsuggestModel.Review" />
+          <EntitySet Name="Users" EntityType="appsuggestModel.User" />
+          <AssociationSet Name="FK_Apps_AppPlatforms" Association="appsuggestModel.FK_Apps_AppPlatforms">
+            <End Role="AppPlatform" EntitySet="AppPlatforms" />
+            <End Role="App" EntitySet="Apps" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Apps__CoverImageId__32E0915F" Association="appsuggestModel.FK__Apps__CoverImageId__32E0915F">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="App" EntitySet="Apps" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reviews__AppId__3C69FB99" Association="appsuggestModel.FK__Reviews__AppId__3C69FB99">
+            <End Role="App" EntitySet="Apps" />
+            <End Role="Review" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Apps_AppTypes" Association="appsuggestModel.FK_Apps_AppTypes">
+            <End Role="AppType" EntitySet="AppTypes" />
+            <End Role="App" EntitySet="Apps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Apps_Providers" Association="appsuggestModel.FK_Apps_Providers">
+            <End Role="Provider" EntitySet="Providers" />
+            <End Role="App" EntitySet="Apps" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reviews__UserId__3B75D760" Association="appsuggestModel.FK__Reviews__UserId__3B75D760">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Review" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="AppImages" Association="appsuggestModel.AppImages">
+            <End Role="App" EntitySet="Apps" />
+            <End Role="Image" EntitySet="Images" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AppPlatform">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Apps" Relationship="appsuggestModel.FK_Apps_AppPlatforms" FromRole="AppPlatform" ToRole="App" />
+        </EntityType>
+        <EntityType Name="App">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LogoLink" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CoverImageId" Type="Int32" Nullable="false" />
+          <Property Name="Tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Version" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDateTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="UpdateDateTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="AppTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ProviderId" Type="Int32" Nullable="false" />
+          <Property Name="AppPlatformId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AppPlatform" Relationship="appsuggestModel.FK_Apps_AppPlatforms" FromRole="App" ToRole="AppPlatform" />
+          <NavigationProperty Name="Image" Relationship="appsuggestModel.FK__Apps__CoverImageId__32E0915F" FromRole="App" ToRole="Image" />
+          <NavigationProperty Name="Reviews" Relationship="appsuggestModel.FK__Reviews__AppId__3C69FB99" FromRole="App" ToRole="Review" />
+          <NavigationProperty Name="AppType" Relationship="appsuggestModel.FK_Apps_AppTypes" FromRole="App" ToRole="AppType" />
+          <NavigationProperty Name="Provider" Relationship="appsuggestModel.FK_Apps_Providers" FromRole="App" ToRole="Provider" />
+          <NavigationProperty Name="Images" Relationship="appsuggestModel.AppImages" FromRole="App" ToRole="Image" />
+        </EntityType>
+        <EntityType Name="AppType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Apps" Relationship="appsuggestModel.FK_Apps_AppTypes" FromRole="AppType" ToRole="App" />
+        </EntityType>
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Value" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Link" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Apps" Relationship="appsuggestModel.FK__Apps__CoverImageId__32E0915F" FromRole="Image" ToRole="App" />
+          <NavigationProperty Name="Apps1" Relationship="appsuggestModel.AppImages" FromRole="Image" ToRole="App" />
+        </EntityType>
+        <EntityType Name="Provider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HomePageLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LogoLink" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Apps" Relationship="appsuggestModel.FK_Apps_Providers" FromRole="Provider" ToRole="App" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="AppId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="AppId" Type="Int32" Nullable="false" />
+          <Property Name="Rate" Type="Int32" Nullable="false" />
+          <Property Name="ReviewText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AppVersion" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDateTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="UpdateDateTime" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="App" Relationship="appsuggestModel.FK__Reviews__AppId__3C69FB99" FromRole="Review" ToRole="App" />
+          <NavigationProperty Name="User" Relationship="appsuggestModel.FK__Reviews__UserId__3B75D760" FromRole="Review" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="Binary" Nullable="false" MaxLength="256" FixedLength="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Reviews" Relationship="appsuggestModel.FK__Reviews__UserId__3B75D760" FromRole="User" ToRole="Review" />
+        </EntityType>
+        <Association Name="FK_Apps_AppPlatforms">
+          <End Type="appsuggestModel.AppPlatform" Role="AppPlatform" Multiplicity="1" />
+          <End Type="appsuggestModel.App" Role="App" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppPlatform">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="App">
+              <PropertyRef Name="AppPlatformId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Apps__CoverImageId__32E0915F">
+          <End Type="appsuggestModel.Image" Role="Image" Multiplicity="1" />
+          <End Type="appsuggestModel.App" Role="App" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="App">
+              <PropertyRef Name="CoverImageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reviews__AppId__3C69FB99">
+          <End Type="appsuggestModel.App" Role="App" Multiplicity="1" />
+          <End Type="appsuggestModel.Review" Role="Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="App">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="AppId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Apps_AppTypes">
+          <End Type="appsuggestModel.AppType" Role="AppType" Multiplicity="1" />
+          <End Type="appsuggestModel.App" Role="App" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="App">
+              <PropertyRef Name="AppTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Apps_Providers">
+          <End Type="appsuggestModel.Provider" Role="Provider" Multiplicity="1" />
+          <End Type="appsuggestModel.App" Role="App" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provider">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="App">
+              <PropertyRef Name="ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reviews__UserId__3B75D760">
+          <End Type="appsuggestModel.User" Role="User" Multiplicity="1" />
+          <End Type="appsuggestModel.Review" Role="Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AppImages">
+          <End Type="appsuggestModel.App" Role="App" Multiplicity="*" />
+          <End Type="appsuggestModel.Image" Role="Image" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="appsuggestModelStoreContainer" CdmEntityContainer="appsuggestEntities">
+          <EntitySetMapping Name="AppPlatforms">
+            <EntityTypeMapping TypeName="appsuggestModel.AppPlatform">
+              <MappingFragment StoreEntitySet="AppPlatforms">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Apps">
+            <EntityTypeMapping TypeName="appsuggestModel.App">
+              <MappingFragment StoreEntitySet="Apps">
+                <ScalarProperty Name="AppPlatformId" ColumnName="AppPlatformId" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="AppTypeId" ColumnName="AppTypeId" />
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+                <ScalarProperty Name="CreationDateTime" ColumnName="CreationDateTime" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Tags" ColumnName="Tags" />
+                <ScalarProperty Name="CoverImageId" ColumnName="CoverImageId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LogoLink" ColumnName="LogoLink" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppTypes">
+            <EntityTypeMapping TypeName="appsuggestModel.AppType">
+              <MappingFragment StoreEntitySet="AppTypes">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Configs">
+            <EntityTypeMapping TypeName="appsuggestModel.Config">
+              <MappingFragment StoreEntitySet="Config">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="appsuggestModel.Image">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Providers">
+            <EntityTypeMapping TypeName="appsuggestModel.Provider">
+              <MappingFragment StoreEntitySet="Providers">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LogoLink" ColumnName="LogoLink" />
+                <ScalarProperty Name="HomePageLink" ColumnName="HomePageLink" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reviews">
+            <EntityTypeMapping TypeName="appsuggestModel.Review">
+              <MappingFragment StoreEntitySet="Reviews">
+                <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+                <ScalarProperty Name="CreationDateTime" ColumnName="CreationDateTime" />
+                <ScalarProperty Name="AppVersion" ColumnName="AppVersion" />
+                <ScalarProperty Name="ReviewText" ColumnName="ReviewText" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="AppId" ColumnName="AppId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="appsuggestModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AppImages" TypeName="appsuggestModel.AppImages" StoreEntitySet="AppImages">
+            <EndProperty Name="Image">
+              <ScalarProperty Name="Id" ColumnName="ImageId" />
+            </EndProperty>
+            <EndProperty Name="App">
+              <ScalarProperty Name="Id" ColumnName="AppId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
