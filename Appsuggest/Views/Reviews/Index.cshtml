@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Appsuggest.Models.Review>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Rate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppVersion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdateDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.App.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppVersion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreationDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdateDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.App.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,75 @@
+﻿@model Appsuggest.Models.Review
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Review</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Rate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReviewText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReviewText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppVersion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppVersion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreationDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdateDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdateDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.App.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.App.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

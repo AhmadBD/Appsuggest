@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="153.19299mm"
+   height="101.38841mm"
+   viewBox="0 0 153.193 101.38841"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="drawing2.svg"
+   inkscape:export-filename="drawing2.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.0444209"
+     inkscape:cx="180.00406"
+     inkscape:cy="78.512408"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-1.0793155,-107.80015)">
+    <circle
+       style="fill:#000000;stroke-width:0.264583"
+       id="path65"
+       cx="67.050148"
+       cy="158.49435"
+       r="50.694206" />
+    <circle
+       style="fill:#ffffff;stroke-width:0.248929"
+       id="path121"
+       cx="67.212738"
+       cy="158.53644"
+       r="42.974998" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:80.1918px;font-family:'Ubuntu Condensed';-inkscape-font-specification:'Ubuntu Condensed, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1d2936;fill-opacity:1;stroke-width:0.240575"
+       x="87.897758"
+       y="162.26707"
+       id="text499"
+       transform="matrix(0.95578764,0.25229535,-0.23614142,0.98392423,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan497"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:80.1918px;font-family:'Ubuntu Condensed';-inkscape-font-specification:'Ubuntu Condensed, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1d2936;fill-opacity:1;stroke-width:0.240575"
+         x="87.897758"
+         y="162.26707">S</tspan></text>
+    <path
+       style="fill:#9898d8;fill-opacity:1;stroke-width:0.179131"
+       d="m 64.273614,208.98302 c -14.703967,-0.7002 -28.685368,-8.17878 -37.682106,-20.15599 -13.477499,-17.94238 -13.477499,-42.72197 0,-60.66435 8.455083,-11.25617 21.06227,-18.42434 35.174271,-19.99931 2.306045,-0.25737 8.262662,-0.25737 10.5687,0 17.315311,1.93249 32.225281,12.28887 39.967221,27.76092 3.61013,7.21475 5.26332,14.30408 5.26332,22.57056 0,5.2351 -0.55126,9.30677 -1.88875,13.9505 -5.64318,19.59294 -22.613098,33.98388 -42.780844,36.27934 -2.958245,0.33671 -5.42425,0.41059 -8.621812,0.25833 z m 8.687822,-7.78865 c 9.013749,-1.10962 18.008078,-5.54664 24.639389,-12.15492 6.403285,-6.38103 10.534005,-14.4066 12.125425,-23.55847 0.52555,-3.02234 0.57523,-10.30466 0.091,-13.34529 -1.16577,-7.32087 -4.02344,-13.97876 -8.61124,-20.06273 -1.391657,-1.84552 -5.709533,-6.16342 -7.555054,-7.5551 -6.748031,-5.0886 -14.150669,-8.01355 -22.391301,-8.84733 -4.150846,-0.41997 -9.996179,-0.008 -14.24091,1.00364 -4.145495,0.98801 -9.947561,3.52276 -13.524426,5.90843 -9.966203,6.64716 -16.60593,16.80635 -18.751769,28.69139 -0.369266,2.04522 -0.413949,2.84014 -0.41093,7.31043 0.003,4.44777 0.04927,5.25907 0.40866,7.16526 0.872423,4.62735 1.918178,7.80814 3.891121,11.83532 6.70203,13.68021 20.174899,22.76061 35.463033,23.90126 2.454708,0.18315 5.940077,0.0684 8.866952,-0.29189 z"
+       id="path253" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24.8867px;font-family:Bungee;-inkscape-font-specification:'Bungee, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1d2936;fill-opacity:1;stroke-width:0.259236"
+       x="-0.26456627"
+       y="157.25134"
+       id="text4692"><tspan
+         sodipodi:role="line"
+         id="tspan4690"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24.8867px;font-family:Bungee;-inkscape-font-specification:'Bungee, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1d2936;fill-opacity:1;stroke-width:0.259236"
+         x="-0.26456627"
+         y="157.25134">APP</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.6147px;font-family:Bungee;-inkscape-font-specification:'Bungee, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1d2936;fill-opacity:1;stroke-width:0.17307"
+       x="86.418297"
+       y="172.29456"
+       id="text4692-1"><tspan
+         sodipodi:role="line"
+         id="tspan4771"
+         x="86.418297"
+         y="172.29456"
+         style="fill:#1d2936;fill-opacity:1;stroke-width:0.17307">UGGEST</tspan></text>
+  </g>
+</svg>

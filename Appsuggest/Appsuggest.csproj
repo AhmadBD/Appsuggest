@@ -130,8 +130,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AppPlatformsController.cs" />
+    <Compile Include="Controllers\AppsController.cs" />
+    <Compile Include="Controllers\AppTypesController.cs" />
+    <Compile Include="Controllers\ConfigsController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImagesController.cs" />
+    <Compile Include="Controllers\ProvidersController.cs" />
+    <Compile Include="Controllers\ReviewsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -179,7 +186,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\a6c1d9e1e1794e3fb4fdb03a20faf5ca.png" />
     <Content Include="Content\Admin\404.html" />
+    <Content Include="Content\a6c1d9e1e1794e3fb4fdb03a20faf5ca %281%292.png" />
     <Content Include="Content\Admin\vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="Content\Admin\vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Content\Admin\vendor\bootstrap\js\bootstrap.js" />
@@ -1881,6 +1890,7 @@
     <Content Include="Content\Admin\utilities-border.html" />
     <Content Include="Content\Admin\utilities-color.html" />
     <Content Include="Content\Admin\utilities-other.html" />
+    <Content Include="Content\drawing2.svg" />
     <Content Include="db.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -2088,10 +2098,44 @@
     <Content Include="Views\AppPlatforms\Index.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\AppTypes\Create.cshtml" />
+    <Content Include="Views\AppTypes\Delete.cshtml" />
+    <Content Include="Views\AppTypes\Details.cshtml" />
+    <Content Include="Views\AppTypes\Edit.cshtml" />
+    <Content Include="Views\AppTypes\Index.cshtml" />
+    <Content Include="Views\Configs\Create.cshtml" />
+    <Content Include="Views\Configs\Delete.cshtml" />
+    <Content Include="Views\Configs\Details.cshtml" />
+    <Content Include="Views\Configs\Edit.cshtml" />
+    <Content Include="Views\Configs\Index.cshtml" />
+    <Content Include="Views\Providers\Create.cshtml" />
+    <Content Include="Views\Providers\Delete.cshtml" />
+    <Content Include="Views\Providers\Details.cshtml" />
+    <Content Include="Views\Providers\Edit.cshtml" />
+    <Content Include="Views\Providers\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Images\Create.cshtml" />
+    <Content Include="Views\Images\Delete.cshtml" />
+    <Content Include="Views\Images\Details.cshtml" />
+    <Content Include="Views\Images\Edit.cshtml" />
+    <Content Include="Views\Images\Index.cshtml" />
+    <Content Include="Views\Apps\Create.cshtml" />
+    <Content Include="Views\Apps\Delete.cshtml" />
+    <Content Include="Views\Apps\Details.cshtml" />
+    <Content Include="Views\Apps\Edit.cshtml" />
+    <Content Include="Views\Apps\Index.cshtml" />
+    <Content Include="Views\Reviews\Create.cshtml" />
+    <Content Include="Views\Reviews\Delete.cshtml" />
+    <Content Include="Views\Reviews\Details.cshtml" />
+    <Content Include="Views\Reviews\Edit.cshtml" />
+    <Content Include="Views\Reviews\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

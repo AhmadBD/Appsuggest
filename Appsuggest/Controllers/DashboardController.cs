@@ -10,7 +10,7 @@ namespace Appsuggest.Controllers
     {
         public ActionResult Index()
         {
-            return RedirectToAction("Index","AppPlatforms");
+            return RedirectToAction("Index","Apps");
         }
 
     }
