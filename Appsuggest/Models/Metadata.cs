@@ -15,15 +15,12 @@ namespace Appsuggest.Models
         [Required]
         [Display(Name = "Bağlantı")]
         public string Link { get; set; }
-        [Required]
         [Display(Name = "Logo")]
         public string LogoLink { get; set; }
         [Required]
         [Display(Name = "Hakkında")]
         public string Description { get; set; }
-        [Required]
-        [Display(Name = "Kapak Resmi")]
-        public int CoverImageId { get; set; }
+    
         [Display(Name = "Etiketleri")]
         public string Tags { get; set; }
         [Required]
@@ -93,7 +90,9 @@ namespace Appsuggest.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public string Link { get; set; }
+        public string Link { get; set; } 
+        [Required]
+        public string Appid { get; set; }
     }
     public class UserMetadata
     {
@@ -103,7 +102,8 @@ namespace Appsuggest.Models
         [StringLength(50)]
         public string Email { get; set; }
         [Required]  
-        public byte[] Password { get; set; }
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
         [StringLength(50)]
         public string FirstName { get; set; }
         [StringLength(50)]

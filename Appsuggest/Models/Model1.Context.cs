@@ -13,10 +13,10 @@ namespace Appsuggest.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class appsuggestEntities : DbContext
+    public partial class appsuggestEntities1 : DbContext
     {
-        public appsuggestEntities()
-            : base("name=appsuggestEntities")
+        public appsuggestEntities1()
+            : base("name=appsuggestEntities1")
         {
         }
     
@@ -32,6 +32,7 @@ namespace Appsuggest.Models
         public virtual DbSet<Image> Images { get; set; }
         public virtual DbSet<Provider> Providers { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

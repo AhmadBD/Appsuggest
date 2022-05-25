@@ -136,12 +136,14 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProvidersController.cs" />
     <Compile Include="Controllers\ReviewsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\SecurePasswordHasher.cs" />
     <Compile Include="Models\App.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -157,6 +159,7 @@
     <Compile Include="Models\Image.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Metadata.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -177,7 +180,11 @@
     <Compile Include="Models\Provider.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\Review.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
@@ -1898,8 +1905,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -1908,13 +1915,6 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\Admin\package-lock.json" />
     <Content Include="Content\Admin\package.json" />
     <Content Include="Content\Admin\vendor\bootstrap\js\bootstrap.bundle.js.map" />
@@ -2066,6 +2066,13 @@
     <Content Include="Content\Admin\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Content\Admin\vendor\jquery\jquery.min.map" />
     <Content Include="Content\Admin\vendor\jquery\jquery.slim.min.map" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2133,6 +2140,7 @@
     <Content Include="Views\Reviews\Details.cshtml" />
     <Content Include="Views\Reviews\Edit.cshtml" />
     <Content Include="Views\Reviews\Index.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -12,7 +12,6 @@ namespace Appsuggest.Models
     using System;
     using System.Collections.Generic;
     
-    using System.ComponentModel.DataAnnotations;
     public partial class App
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,7 +26,6 @@ namespace Appsuggest.Models
         public string Link { get; set; }
         public string LogoLink { get; set; }
         public string Description { get; set; }
-        public int CoverImageId { get; set; }
         public string Tags { get; set; }
         public string Version { get; set; }
         public System.DateTime CreationDateTime { get; set; }
@@ -37,7 +35,6 @@ namespace Appsuggest.Models
         public int AppPlatformId { get; set; }
     
         public virtual AppPlatform AppPlatform { get; set; }
-        public virtual Image Image { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Review> Reviews { get; set; }
         public virtual AppType AppType { get; set; }

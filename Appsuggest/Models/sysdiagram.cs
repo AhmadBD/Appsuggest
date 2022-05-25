@@ -12,17 +12,12 @@ namespace Appsuggest.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Review
+    public partial class sysdiagram
     {
-        public int UserId { get; set; }
-        public int AppId { get; set; }
-        public int Rate { get; set; }
-        public string ReviewText { get; set; }
-        public string AppVersion { get; set; }
-        public System.DateTime CreationDateTime { get; set; }
-        public System.DateTime UpdateDateTime { get; set; }
-    
-        public virtual App App { get; set; }
-        public virtual User User { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

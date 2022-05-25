@@ -4,22 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="00ff4c0c263c466a9e864f0e3b427dd9" Name="Diagram1">
-        <EntityTypeShape EntityType="appsuggestModel.AppPlatform" Width="1.5" PointX="0.75" PointY="6.625" />
-        <EntityTypeShape EntityType="appsuggestModel.App" Width="1.5" PointX="3" PointY="2.625" />
-        <EntityTypeShape EntityType="appsuggestModel.AppType" Width="1.5" PointX="0.75" PointY="4.125" />
-        <EntityTypeShape EntityType="appsuggestModel.Config" Width="1.5" PointX="7.75" PointY="2" />
-        <EntityTypeShape EntityType="appsuggestModel.Image" Width="1.5" PointX="5.25" PointY="7.625" />
+      <Diagram DiagramId="fc4fe6a7969044588951f91cafa966e3" Name="Diagram1">
+        <EntityTypeShape EntityType="appsuggestModel.AppPlatform" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="appsuggestModel.App" Width="1.5" PointX="3" PointY="3" />
+        <EntityTypeShape EntityType="appsuggestModel.AppType" Width="1.5" PointX="0.75" PointY="6.625" />
+        <EntityTypeShape EntityType="appsuggestModel.Config" Width="1.5" PointX="7.75" PointY="2.125" />
+        <EntityTypeShape EntityType="appsuggestModel.Image" Width="1.5" PointX="5.25" PointY="7.75" />
         <EntityTypeShape EntityType="appsuggestModel.Provider" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="appsuggestModel.Review" Width="1.5" PointX="5.25" PointY="3.625" />
-        <EntityTypeShape EntityType="appsuggestModel.User" Width="1.5" PointX="3" PointY="8.75" />
+        <EntityTypeShape EntityType="appsuggestModel.Review" Width="1.5" PointX="5.25" PointY="3.75" />
+        <EntityTypeShape EntityType="appsuggestModel.sysdiagram" Width="1.5" PointX="7.75" PointY="5.125" />
+        <EntityTypeShape EntityType="appsuggestModel.User" Width="1.5" PointX="3" PointY="8.875" />
         <AssociationConnector Association="appsuggestModel.FK_Apps_AppPlatforms" />
-        <AssociationConnector Association="appsuggestModel.FK__Apps__CoverImageId__32E0915F" />
         <AssociationConnector Association="appsuggestModel.FK__Reviews__AppId__3C69FB99" />
         <AssociationConnector Association="appsuggestModel.FK_Apps_AppTypes" />
         <AssociationConnector Association="appsuggestModel.FK_Apps_Providers" />
+        <AssociationConnector Association="appsuggestModel.FK_Images_Apps" />
         <AssociationConnector Association="appsuggestModel.FK__Reviews__UserId__3B75D760" />
-        <AssociationConnector Association="appsuggestModel.AppImages" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

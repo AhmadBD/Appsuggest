@@ -13,7 +13,7 @@ namespace Appsuggest.Controllers
 {
     public class ImagesController : Controller
     {
-        private appsuggestEntities db = new appsuggestEntities();
+        private appsuggestEntities1 db = new appsuggestEntities1();
 
         // GET: Images
         public async Task<ActionResult> Index()

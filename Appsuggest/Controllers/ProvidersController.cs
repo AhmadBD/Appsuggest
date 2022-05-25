@@ -13,7 +13,7 @@ namespace Appsuggest.Controllers
 {
     public class ProvidersController : Controller
     {
-        private appsuggestEntities db = new appsuggestEntities();
+        private appsuggestEntities1 db = new appsuggestEntities1();
 
         // GET: Providers
         public async Task<ActionResult> Index()

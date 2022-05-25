@@ -13,12 +13,12 @@ namespace Appsuggest.Controllers
 {
     public class AppsController : Controller
     {
-        private appsuggestEntities db = new appsuggestEntities();
+        private appsuggestEntities1 db = new appsuggestEntities1();
 
         // GET: Apps
         public async Task<ActionResult> Index()
         {
-            var apps = db.Apps.Include(a => a.AppPlatform).Include(a => a.Image).Include(a => a.AppType).Include(a => a.Provider);
+            var apps = db.Apps.Include(a => a.AppPlatform).Include(a => a.Images).Include(a => a.AppType).Include(a => a.Provider);
             return View(await apps.ToListAsync());
         }
 
@@ -62,7 +62,6 @@ namespace Appsuggest.Controllers
             }
 
             ViewBag.AppPlatformId = new SelectList(db.AppPlatforms, "Id", "Name", app.AppPlatformId);
-            ViewBag.CoverImageId = new SelectList(db.Images, "Id", "Link", app.CoverImageId);
             ViewBag.AppTypeId = new SelectList(db.AppTypes, "Id", "Name", app.AppTypeId);
             ViewBag.ProviderId = new SelectList(db.Providers, "Id", "Name", app.ProviderId);
             return View(app);
@@ -81,7 +80,6 @@ namespace Appsuggest.Controllers
                 return HttpNotFound();
             }
             ViewBag.AppPlatformId = new SelectList(db.AppPlatforms, "Id", "Name", app.AppPlatformId);
-            ViewBag.CoverImageId = new SelectList(db.Images, "Id", "Link", app.CoverImageId);
             ViewBag.AppTypeId = new SelectList(db.AppTypes, "Id", "Name", app.AppTypeId);
             ViewBag.ProviderId = new SelectList(db.Providers, "Id", "Name", app.ProviderId);
             return View(app);
@@ -101,7 +99,6 @@ namespace Appsuggest.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.AppPlatformId = new SelectList(db.AppPlatforms, "Id", "Name", app.AppPlatformId);
-            ViewBag.CoverImageId = new SelectList(db.Images, "Id", "Link", app.CoverImageId);
             ViewBag.AppTypeId = new SelectList(db.AppTypes, "Id", "Name", app.AppTypeId);
             ViewBag.ProviderId = new SelectList(db.Providers, "Id", "Name", app.ProviderId);
             return View(app);
