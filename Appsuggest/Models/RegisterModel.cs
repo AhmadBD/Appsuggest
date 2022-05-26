@@ -12,12 +12,22 @@ namespace Appsuggest.Models
         public string Password { get; set; }
         [DisplayName("Mail Adresi")]
         [EmailAddress()]
-        [MaxLength(15, ErrorMessage = "Email Bilgisi En Fazla 15 karakter olmalıdır")]
+        [MaxLength(50, ErrorMessage = "Email Bilgisi En Fazla 50 karakter olmalıdır")]
         public string Email { get; set; }
         [DisplayName("Kullanıcı Şifre Tekrarı")]
         [DataType(DataType.Password)]
         [Required]
-        [Compare("KullaniciSifre")]
+        [Compare("Password")]
         public string Password2 { get; set; }
+        [DisplayName("Ad")]
+        [MaxLength(50, ErrorMessage = "Ad En Fazla 50 karakter olmalıdır")]
+        public string FirstName { get; internal set; }
+        [DisplayName("Soyad")]
+        [MaxLength(50, ErrorMessage = "Soyad En Fazla 50 karakter olmalıdır")]
+        public string LastName { get; internal set; }
+        [DisplayName("Telefon Numarası")]
+        [Phone()]
+        [MaxLength(15, ErrorMessage = "Telefon Numarası En Fazla 15 karakter olmalıdır")]
+        public string Phone { get; internal set; }
     }
 }

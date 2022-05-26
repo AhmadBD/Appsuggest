@@ -22,12 +22,14 @@ namespace Appsuggest.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel loginModel)
         {
+            if(!ModelState.IsValid)
+                return View(loginModel);    
             using (var context = new appsuggestEntities1())
             {
                 var usr = context.Users.Where(u => u.Email == loginModel.Email).FirstOrDefault();
-                if(usr == null ||  SecurePasswordHasher.Verify(loginModel.Password,usr.Password))
+                if(usr == null ||  !SecurePasswordHasher.Verify(loginModel.Password,usr.Password))
                 {
-                    ModelState.AddModelError(null, "E-posta yada şifre yanlıştır");
+                    ModelState.AddModelError("", "E-posta yada şifre yanlıştır");
                     return View(loginModel);
                 }
                 Session["UserId"] = usr.Id.ToString();
@@ -41,7 +43,18 @@ namespace Appsuggest.Controllers
             }
            
         } 
-       // GET: Login
+       // GET: Logout
+        public ActionResult Logout()
+        {
+            if (Session["UserId"] != null)
+            {
+                Session.Remove("UserId");
+                Session.Remove("UserName");
+                Session.Remove("UserEmail");
+            }
+            return RedirectToAction("Login");
+        }
+        // GET: Register
         public ActionResult Register(string returnUrl = null)
         {
             if (Session["UserId"] != null)
@@ -52,6 +65,8 @@ namespace Appsuggest.Controllers
         [HttpPost]
         public ActionResult Register(RegisterModel registerModel)
         {
+            if (!ModelState.IsValid)
+                return View(registerModel);
             using (var context = new appsuggestEntities1())
             {
                 var usr = context.Users.Where(u => u.Email == registerModel.Email).FirstOrDefault();
@@ -59,7 +74,18 @@ namespace Appsuggest.Controllers
                 {
                     ModelState.AddModelError("Email", "E-posta başka bir hesap tarafından kullanılmıştır");
                     return View(registerModel);
-                }//todo continue here
+                }
+                usr = new User()
+                {
+                    Email = registerModel.Email,
+                    Password = SecurePasswordHasher.Hash(registerModel.Password),
+                    FirstName = registerModel.FirstName,
+                    LastName = registerModel.LastName,
+                    Phone = registerModel.Phone,
+                    IsAdmin = false
+                };
+                context.Users.Add(usr);
+                context.SaveChanges();
                 Session["UserId"] = usr.Id.ToString();
                 Session["UserName"] = usr.FirstName+" "+usr.LastName;
                 Session["UserEmail"] = usr.Email;
