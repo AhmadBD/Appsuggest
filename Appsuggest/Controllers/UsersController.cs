@@ -86,7 +86,7 @@ namespace Appsuggest.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(user).State = EntityState.Modified;
-                if (db.Entry(user).OriginalValues["Password"] != user.Password)
+                if (!SecurePasswordHasher.IsHashSupported(user.Password))
                 {
                     user.Password = SecurePasswordHasher.Hash(user.Password);
                 }

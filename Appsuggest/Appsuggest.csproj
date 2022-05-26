@@ -196,9 +196,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\a6c1d9e1e1794e3fb4fdb03a20faf5ca.png" />
     <Content Include="Content\Admin\404.html" />
-    <Content Include="Content\a6c1d9e1e1794e3fb4fdb03a20faf5ca %281%292.png" />
     <Content Include="Content\Admin\vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="Content\Admin\vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Content\Admin\vendor\bootstrap\js\bootstrap.js" />
@@ -1869,6 +1867,17 @@
     <Content Include="Content\Admin\vendor\jquery\jquery.slim.js" />
     <Content Include="Content\Admin\vendor\jquery\jquery.slim.min.js" />
     <Content Include="Content\Admin\blank.html" />
+    <Content Include="Content\assets\android-chrome-192x192.png" />
+    <Content Include="Content\assets\android-chrome-512x512.png" />
+    <Content Include="Content\assets\apple-touch-icon.png" />
+    <Content Include="Content\assets\browserconfig.xml" />
+    <Content Include="Content\assets\favicon-16x16.png" />
+    <Content Include="Content\assets\favicon-32x32.png" />
+    <Content Include="Content\assets\favicon.ico" />
+    <Content Include="Content\assets\mstile-150x150.png" />
+    <Content Include="Content\assets\safari-pinned-tab.svg" />
+    <Content Include="Content\assets\Untitled.jpg" />
+    <Content Include="Content\assets\Untitled2.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -1900,7 +1909,10 @@
     <Content Include="Content\Admin\utilities-border.html" />
     <Content Include="Content\Admin\utilities-color.html" />
     <Content Include="Content\Admin\utilities-other.html" />
+    <Content Include="Content\css\styles.css" />
     <Content Include="Content\drawing2.svg" />
+    <Content Include="Content\index.html" />
+    <Content Include="Content\js\scripts.js" />
     <Content Include="db.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -2076,6 +2088,7 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\assets\site.webmanifest" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

@@ -35,6 +35,7 @@ namespace Appsuggest.Controllers
                 Session["UserId"] = usr.Id.ToString();
                 Session["UserName"] = usr.FirstName+" "+usr.LastName;
                 Session["UserEmail"] = usr.Email;
+                Session["IsAdmin"] = usr.IsAdmin.ToString();
                 if (ViewBag.returnUrl != null)
                     return Redirect(ViewBag.returnUrl);
                 if(usr.IsAdmin)
@@ -51,6 +52,7 @@ namespace Appsuggest.Controllers
                 Session.Remove("UserId");
                 Session.Remove("UserName");
                 Session.Remove("UserEmail");
+                Session.Remove("IsAdmin");
             }
             return RedirectToAction("Login");
         }
@@ -89,6 +91,7 @@ namespace Appsuggest.Controllers
                 Session["UserId"] = usr.Id.ToString();
                 Session["UserName"] = usr.FirstName+" "+usr.LastName;
                 Session["UserEmail"] = usr.Email;
+                Session["IsAdmin"] = usr.IsAdmin.ToString();
                 if (ViewBag.returnUrl != null)
                     return Redirect(ViewBag.returnUrl);
                 if(usr.IsAdmin)

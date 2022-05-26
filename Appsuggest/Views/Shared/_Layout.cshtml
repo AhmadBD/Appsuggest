@@ -1,42 +1,153 @@
-﻿<!DOCTYPE html>
-<html>
+﻿
+<!DOCTYPE html>
+<html lang="tr">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>@ViewBag.Title</title>
+    <!-- Favicon-->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/content/assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/content/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/content/assets/favicon-16x16.png">
+    <link rel="manifest" href="~/content/assets/site.webmanifest">
+    <link rel="mask-icon" href="~/content/assets/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link href="~/Content/Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/Content/css/styles.css" rel="stylesheet" />
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+<body style="background-image: url('Content/assets/Untitled2.jpg'); background-size: cover">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+           
+            <a class="navbar-brand" href="@Url.Action("Index","Home")">Appsuggest</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="@Url.Action("Index","Home")">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("About","Home")">Hakkında</a></li>
+
                 </ul>
+                <ul class="navbar-nav ml-auto mb-2 mb-lg-0 ms-lg-4">
+                    @if (Session["UserId"] == null)
+                    {
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="@Url.Action("Login", "Login")">Giriş / Kaydol <i class="fa fa-lock"></i></a></li>
+                    }
+                    else
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">@Session["UserName"] <i class="fa fa-lock"></i></a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="@Url.Action("ClientDetails", "Users")">Kullanıcı Detaylari</a> </li>
+                                <li><hr class="dropdown-divider" /></li>
+                                @if ((string)Session["IsAdmin"]=="True")
+                                {
+                                    <li><a class="dropdown-item" href="@Url.Action("Index", "Dashboard")">Dashboard <i class="fa fa-dashboard"></i></a></li>
+                                }
+                                    <li><a class="dropdown-item" href="@Url.Action("Logout", "Login")">Çıkış yap <i class="fa fa-door-open"></i></a></li>
+                                </ul>
+                        </li>
+
+
+                    }
+                </ul>
+                @*<form class="d-flex">
+                <button class="btn btn-outline-dark" type="submit">
+                    <i class="bi-cart-fill me-1"></i>
+                    Cart
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                </button>
+            </form>*@
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    </nav>
+    <!-- Header-->
+    <header class=" py-5"  >
+        
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-left text-white">
+                @*<h1 class="display-4 fw-bolder">Appsuggest</h1>*@
+                <div class="n-brand-icon display-4 fw-bolder">
+                    <object data="~/Content/drawing2.svg" width="300"> </object>
+                </div>
+                <p class="lead fw-normal text-black-50 mb-0">Kullanışlı uygulamaları hızlıca bulun</p>
+            </div>
+            <div class="text-right text-white">
+                
+            </div>
+        </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    </header>
+    <!-- Section-->
+    <section class="py-5 bg-white">
+        <div class="container px-4 px-lg-5 mt-5">
+            @RenderBody()
+        </div>
+    </section>
+    <!-- Footer-->
+    <footer class="py-5 ">
+        <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Appsuggest @DateTime.Now.Year</p></div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="~/Content/js/scripts.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+
+
+
+
+
+
+
+@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+    </html>*@
