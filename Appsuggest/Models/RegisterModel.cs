@@ -21,13 +21,13 @@ namespace Appsuggest.Models
         public string Password2 { get; set; }
         [DisplayName("Ad")]
         [MaxLength(50, ErrorMessage = "Ad En Fazla 50 karakter olmalıdır")]
-        public string FirstName { get; internal set; }
+        public string FirstName { get;  set; }
         [DisplayName("Soyad")]
         [MaxLength(50, ErrorMessage = "Soyad En Fazla 50 karakter olmalıdır")]
-        public string LastName { get; internal set; }
+        public string LastName { get;  set; }
         [DisplayName("Telefon Numarası")]
         [Phone()]
         [MaxLength(15, ErrorMessage = "Telefon Numarası En Fazla 15 karakter olmalıdır")]
-        public string Phone { get; internal set; }
+        public string Phone { get;  set; }
     }
 }

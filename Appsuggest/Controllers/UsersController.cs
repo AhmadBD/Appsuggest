@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Appsuggest.Models;
+using Appsuggest.Helpers;
 
 namespace Appsuggest.Controllers
 {
@@ -51,6 +52,7 @@ namespace Appsuggest.Controllers
         {
             if (ModelState.IsValid)
             {
+                user.Password = SecurePasswordHasher.Hash(user.Password);
                 db.Users.Add(user);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -84,6 +86,10 @@ namespace Appsuggest.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(user).State = EntityState.Modified;
+                if (db.Entry(user).OriginalValues["Password"] != user.Password)
+                {
+                    user.Password = SecurePasswordHasher.Hash(user.Password);
+                }
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

@@ -3,10 +3,9 @@
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Düzenle";
 }
 
-<h2>Edit</h2>
 
 
 @using (Html.BeginForm())
@@ -14,7 +13,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>AppPlatform</h4>
+       <h4>Uygulama Platformu</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
@@ -36,7 +35,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Ana ekrana dön", "Index")
 </div>
 
 @section Scripts {

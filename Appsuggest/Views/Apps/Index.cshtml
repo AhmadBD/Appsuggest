@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Uygulamalar";
     var ornekgrid = new WebGrid(source: Model, canPage: true, rowsPerPage: 10);
     ornekgrid.Pager(WebGridPagerModes.All);
     ViewBag.SearchAction = Url.Action("Index", "Apps");
@@ -10,13 +10,12 @@
     ViewBag.SearchName ="search";
 }
 
-<h2>Index</h2>
 
 <h3>Toplam Kayıt Sayısı: @ViewBag.TotalRows</h3>
 
 <div>
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Yeni kayıt oluştur", "Create")
     </p>
     @ornekgrid.Table(
     tableStyle: "table table-responsive table-bordered",
@@ -27,7 +26,7 @@
     ornekgrid.Column(columnName: "Tags", header: Html.DisplayNameFor(model => model.Tags).ToString()),
     ornekgrid.Column(columnName: "Version", header: Html.DisplayNameFor(model => model.Version).ToString()),
     ornekgrid.Column(columnName: "CreationDateTime", header: Html.DisplayNameFor(model => model.CreationDateTime).ToString()),
-    ornekgrid.Column(columnName: "UpdateDateTime", header: Html.DisplayNameFor(model => model.UpdateDateTime).ToHtmlString()),
+    ornekgrid.Column(columnName: "UpdateDateTime", header: Html.DisplayNameFor(model => model.UpdateDateTime).ToString()),
     ornekgrid.Column(columnName: "AppTypeName", header: Html.DisplayNameFor(model => model.AppTypeId).ToString()),
     ornekgrid.Column(columnName: "ProviderName", header: Html.DisplayNameFor(model => model.ProviderId).ToString()),
     ornekgrid.Column(columnName: "AppPlatformName", header: Html.DisplayNameFor(model => model.AppPlatformId).ToString()),
@@ -57,7 +56,7 @@
 
 
 @*<p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Yeni kayıt oluştur", "Create")
 </p>
 <table class="table">
     <tr>

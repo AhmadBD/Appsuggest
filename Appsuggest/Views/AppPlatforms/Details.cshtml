@@ -3,13 +3,12 @@
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detaylar";
 }
 
-<h2>Details</h2>
 
 <div>
-    <h4>AppPlatform</h4>
+   <h4>Uygulama Platformu</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -23,6 +22,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Ana ekrana dön", "Index")
 </p>
