@@ -45,7 +45,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="@Url.Action("Index","Dashboard")">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
+                    <span>Gösterge Paneli</span>
                 </a>
             </li>
 
@@ -54,7 +54,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                App Management
+                Uygulama Yönetimi
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -62,17 +62,17 @@
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseApps"
                    aria-expanded="true" aria-controls="collapseApps">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Apps</span>
+                    <span>Uygulamalar</span>
                 </a>
                 <div id="collapseApps" class="collapse show" aria-labelledby="headingApps" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Apps:</h6>
-                        <a class="collapse-item" href="@Url.Action("Index","Apps")">Apps</a>
-                        <a class="collapse-item" href="@Url.Action("Index","AppTypes")">App Types</a>
-                        <a class="collapse-item" href="@Url.Action("Index","AppPlatforms")">App Platforms</a>
-                        <a class="collapse-item" href="@Url.Action("Index","Providers")">App Providers</a>
-                        <a class="collapse-item" href="@Url.Action("Index","Reviews")">App Reviews</a>
-                        <a class="collapse-item" href="@Url.Action("Index","Images")">App Images</a>
+                        <h6 class="collapse-header">Uygulamalar:</h6>
+                        <a class="collapse-item" href="@Url.Action("Index","Apps")">Uygulamalar</a>
+                        <a class="collapse-item" href="@Url.Action("Index","AppTypes")">Uygulama Türleri</a>
+                        <a class="collapse-item" href="@Url.Action("Index","AppPlatforms")">Uygulama Platformu</a>
+                        <a class="collapse-item" href="@Url.Action("Index","Providers")">Uygulama Üreticileri</a>
+                        <a class="collapse-item" href="@Url.Action("Index","Reviews")">Uygulama Yorumları</a>
+                        <a class="collapse-item" href="@Url.Action("Index","Images")">Uygulama Resimleri</a>
                    
                     </div>
                 </div>
@@ -83,14 +83,14 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Users
+                Kullanıcılar
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="@Url.Action("Index","Users")" >
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Users</span>
+                    <span>Kullanıcılar</span>
                 </a>
                
             </li>
@@ -102,14 +102,14 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Site Configuration
+                Site Ayarları
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="@Url.Action("Index","Configs")" >
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Configuration</span>
+                    <span>Ayarları</span>
                 </a>
             </li>
 
@@ -139,12 +139,12 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form id="searchForm" action="@(ViewBag.SearchAction)" method="get" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                   aria-label="Search" aria-describedby="basic-addon2">
+                                   aria-label="Search" aria-describedby="basic-addon2" name="@ViewBag.SearchName" value="@(ViewBag.SearchValue)">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-primary" type="button" onclick="$('#searchForm').submit()">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -304,19 +304,29 @@
                         </li>-->
 
                         <div class="topbar-divider d-none d-sm-block"></div>
-
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
+                        @if (Session["UserId"] == null)
+                        { <!-- Nav Item - login -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Login", "Login", new { returnUrl = Request.Url.ToString() })" id="login" role="button"
+                              >
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Giriş Yap</span>
+                                <i class="fa fa-lock"></i>
+                            </a>
+                          
+                        </li>
+                        }
+                        else
+                        { <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">@(Session["UserName"])</span>
                                 <img class="img-profile rounded-circle"
                                      src="~/Content/Admin/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                  aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="@Url.Action("Details", "User")">
+                                <a class="dropdown-item" href="@Url.Action("Details", "Users", new { id = Session["UserId"] })">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -331,11 +341,11 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
+                                    Çıkış
                                 </a>
                             </div>
                         </li>
-
+                        }
                     </ul>
 
                 </nav>
@@ -355,7 +365,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Apps Suggest 2022</span>
+                        <span>Copyright &copy; Appsuggest 2022</span>
                     </div>
                 </div>
             </footer>
@@ -377,15 +387,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Ayrılmaya hazır?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Mevcut oturumunuzu bitirmeye hazırsanız, aşağıdan "Çıkış"ı seçin.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="@Url.Action("Logout", "User")">Logout</a>
+                    <a class="btn btn-primary" href="@Url.Action("Logout", "Login")">Çıkış</a>
                 </div>
             </div>
         </div>

@@ -3,11 +3,60 @@
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     ViewBag.Title = "Index";
+    var ornekgrid = new WebGrid(source: Model, canPage: true, rowsPerPage: 10);
+    ornekgrid.Pager(WebGridPagerModes.All);
+    ViewBag.SearchAction = Url.Action("Index", "Apps");
+    ViewBag.SearchValue = ViewBag.search;
+    ViewBag.SearchName ="search";
 }
 
 <h2>Index</h2>
 
-<p>
+<h3>Toplam Kayıt Sayısı: @ViewBag.TotalRows</h3>
+
+<div>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    @ornekgrid.Table(
+    tableStyle: "table table-responsive table-bordered",
+    columns: ornekgrid.Columns(
+    ornekgrid.Column(columnName: "Name", header: Html.DisplayNameFor(model => model.Name).ToString()),
+    ornekgrid.Column(columnName: "Link", header: Html.DisplayNameFor(model => model.Link).ToString()),
+    ornekgrid.Column(columnName: "LogoLink", header: Html.DisplayNameFor(model => model.LogoLink).ToString()),
+    ornekgrid.Column(columnName: "Tags", header: Html.DisplayNameFor(model => model.Tags).ToString()),
+    ornekgrid.Column(columnName: "Version", header: Html.DisplayNameFor(model => model.Version).ToString()),
+    ornekgrid.Column(columnName: "CreationDateTime", header: Html.DisplayNameFor(model => model.CreationDateTime).ToString()),
+    ornekgrid.Column(columnName: "UpdateDateTime", header: Html.DisplayNameFor(model => model.UpdateDateTime).ToHtmlString()),
+    ornekgrid.Column(columnName: "AppTypeName", header: Html.DisplayNameFor(model => model.AppTypeId).ToString()),
+    ornekgrid.Column(columnName: "ProviderName", header: Html.DisplayNameFor(model => model.ProviderId).ToString()),
+    ornekgrid.Column(columnName: "AppPlatformName", header: Html.DisplayNameFor(model => model.AppPlatformId).ToString()),
+    ornekgrid.Column(columnName: "Etkinlikleri" +
+    "", header: "",
+    format:@<text>@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+    @Html.ActionLink("Delete", "Delete", new { id = item.Id })</text>)
+)
+)
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -39,7 +88,7 @@
         <th>
             @Html.DisplayNameFor(model => model.AppPlatform.Name)
         </th>
-       
+
         <th>
             @Html.DisplayNameFor(model => model.AppType.Name)
         </th>
@@ -49,48 +98,49 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Link)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LogoLink)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tags)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Version)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreationDateTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UpdateDateTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AppPlatform.Name)
-        </td>
-       
-        <td>
-            @Html.DisplayFor(modelItem => item.AppType.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Provider.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Link)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LogoLink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tags)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Version)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdateDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppPlatform.Name)
+            </td>
 
-</table>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Provider.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>*@

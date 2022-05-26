@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Appsuggest.Models;
+using System.Linq.Dynamic.Core;
 
 namespace Appsuggest.Controllers
 {
@@ -16,10 +17,18 @@ namespace Appsuggest.Controllers
         private appsuggestEntities1 db = new appsuggestEntities1();
 
         // GET: Apps
-        public async Task<ActionResult> Index()
+        //public async Task<ActionResult> Index()
+        //{
+        //    var apps = db.Apps.Include(a => a.AppPlatform).Include(a => a.Images).Include(a => a.AppType).Include(a => a.Provider);
+        //    return View(await apps.ToListAsync());
+        //}
+        public ActionResult Index(string sort = "Name", string sortdir = "asc",string search = "")
         {
-            var apps = db.Apps.Include(a => a.AppPlatform).Include(a => a.Images).Include(a => a.AppType).Include(a => a.Provider);
-            return View(await apps.ToListAsync());
+            int totalRecord ;
+            var data = GetApps(search, sort, sortdir, out totalRecord);
+            ViewBag.TotalRows = totalRecord;
+            ViewBag.search = search;
+            return View(data);
         }
 
         // GET: Apps/Details/5
@@ -56,6 +65,8 @@ namespace Appsuggest.Controllers
         {
             if (ModelState.IsValid)
             {
+                app.CreationDateTime = DateTime.Now;
+                app.UpdateDateTime = DateTime.Now;
                 db.Apps.Add(app);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -94,7 +105,9 @@ namespace Appsuggest.Controllers
         {
             if (ModelState.IsValid)
             {
+              
                 db.Entry(app).State = EntityState.Modified;
+                app.UpdateDateTime = DateTime.Now;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -138,5 +151,24 @@ namespace Appsuggest.Controllers
             }
             base.Dispose(disposing);
         }
+        public List<App> GetApps(string search, string sort, string sortdir, out int totalRecord)
+        {
+            //burada AlbümEntities veritabanı içeriğini oluşturmaktadır
+            using (var db = new appsuggestEntities1())
+            {
+                var v = (from a in db.Apps.Include(a => a.AppPlatform).Include(a => a.Images).Include(a => a.AppType).Include(a => a.Provider)
+                         where a.Name.Contains(search) ||
+                         a.Provider.Name.Contains(search) ||
+                         a.AppType.Name.Contains(search) ||
+                         a.AppPlatform.Name.Contains(search) ||
+                         a.Description.Contains(search)
+                         select a
+                );
+                totalRecord = v.Count();
+                v = v.OrderBy(sort + " " + sortdir);
+                return v.ToList();
+            }
+        }
     }
+   
 }

@@ -10,6 +10,10 @@ namespace Appsuggest.Models
     [MetadataType(typeof(AppMetadata))]
     public partial class App
     {
+        
+        public string ProviderName { get { return Provider.Name; } }
+        public string AppTypeName { get { return AppType.Name; } }
+        public string AppPlatformName { get { return AppPlatform.Name; } }
     }
     [MetadataType(typeof(AppTypeMetadata))]
     public partial class AppType

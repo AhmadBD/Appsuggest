@@ -36,6 +36,9 @@ namespace Appsuggest.Models
         [Required]
         [Display(Name = "Uygulama Üretici")]
         public int ProviderId { get; set; }
+        [Required]
+        [Display(Name = "Uygulama Platformu")]
+        public int AppPlatformId { get; set; }
 
     }
 
