@@ -159,6 +159,7 @@
     <Compile Include="Models\Config.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HomeSearchViewModel.cs" />
     <Compile Include="Models\Image.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
