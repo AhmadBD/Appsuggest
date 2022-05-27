@@ -35,6 +35,14 @@ namespace Appsuggest.Models
     public partial class Image
     {
     }
+    [MetadataType(typeof(CityMetadata))]
+    public partial class City
+    {
+    }
+    [MetadataType(typeof(StateMetadata))]
+    public partial class State
+    {
+    }
     [MetadataType(typeof(UserMetadata))]
     public partial class User
     {

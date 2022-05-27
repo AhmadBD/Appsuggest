@@ -47,6 +47,13 @@ namespace Appsuggest.Controllers
             return db.Providers.Select(x =>
            new SelectListItem { Text = x.Name, Value = x.Id.ToString() }).ToList();
         }
+       
+        public JsonResult GetCityList(int id)
+        {
+            return Json(db.States.Find(id).Cities.Select(x =>
+            new SelectListItem { Text = x.Name, Value = x.Id.ToString() }),
+            JsonRequestBehavior.AllowGet);
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

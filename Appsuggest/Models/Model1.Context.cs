@@ -32,7 +32,8 @@ namespace Appsuggest.Models
         public virtual DbSet<Image> Images { get; set; }
         public virtual DbSet<Provider> Providers { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<City> Cities { get; set; }
+        public virtual DbSet<State> States { get; set; }
     }
 }

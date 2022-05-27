@@ -12,7 +12,6 @@
         <EntityTypeShape EntityType="appsuggestModel.Image" Width="1.5" PointX="5.25" PointY="7.75" />
         <EntityTypeShape EntityType="appsuggestModel.Provider" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="appsuggestModel.Review" Width="1.5" PointX="5.25" PointY="3.75" />
-        <EntityTypeShape EntityType="appsuggestModel.sysdiagram" Width="1.5" PointX="7.75" PointY="5.125" />
         <EntityTypeShape EntityType="appsuggestModel.User" Width="1.5" PointX="3" PointY="8.875" />
         <AssociationConnector Association="appsuggestModel.FK_Apps_AppPlatforms" />
         <AssociationConnector Association="appsuggestModel.FK__Reviews__AppId__3C69FB99" />
@@ -20,6 +19,10 @@
         <AssociationConnector Association="appsuggestModel.FK_Apps_Providers" />
         <AssociationConnector Association="appsuggestModel.FK_Images_Apps" />
         <AssociationConnector Association="appsuggestModel.FK__Reviews__UserId__3B75D760" />
+        <EntityTypeShape EntityType="appsuggestModel.City" Width="1.5" PointX="0.75" PointY="9.5" />
+        <EntityTypeShape EntityType="appsuggestModel.State" Width="1.5" PointX="0.75" PointY="12.625" />
+        <AssociationConnector Association="appsuggestModel.FK_Cities_States" />
+        <AssociationConnector Association="appsuggestModel.FK_Users_Cities" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

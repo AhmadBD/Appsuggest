@@ -29,5 +29,8 @@ namespace Appsuggest.Models
         [Phone()]
         [MaxLength(15, ErrorMessage = "Telefon Numarası En Fazla 15 karakter olmalıdır")]
         public string Phone { get;  set; }
+       
+        
+        public int? CityId { get;  set; }
     }
 }

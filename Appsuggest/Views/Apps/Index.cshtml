@@ -32,9 +32,9 @@
     ornekgrid.Column(columnName: "AppPlatformName", header: Html.DisplayNameFor(model => model.AppPlatformId).ToString()),
     ornekgrid.Column(columnName: "Etkinlikleri" +
     "", header: "",
-    format:@<text>@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-    @Html.ActionLink("Delete", "Delete", new { id = item.Id })</text>)
+    format:@<text>@Html.ActionLink("Düzenle", "Edit", new { id = item.Id }) |
+    @Html.ActionLink("Detayları", "Details", new { id = item.Id }) |
+    @Html.ActionLink("Sil", "Delete", new { id = item.Id })</text>)
 )
 )
 </div>

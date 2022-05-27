@@ -48,8 +48,10 @@ namespace Appsuggest.Models
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
+        [Display(Name = "Ad")]
         public string Name { get; set; }
         [Required]
+        [Display(Name = "Açıklama")]
         public string Description { get; set; }
     }
     public class ProviderMetadata
@@ -58,12 +60,16 @@ namespace Appsuggest.Models
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
+        [Display(Name = "Ad")]
         public string Name { get; set; }
         [Url]
+        [Display(Name = "Ana sayfa linki")]
         public string HomePageLink { get; set; }
         [Required]
+        [Display(Name = "Logo Linki")]
         public string LogoLink { get; set; }
         [Required]
+        [Display(Name = "Açıklama")]
         public string Description { get; set; }
     }
     public class ReviewMetadata
@@ -86,6 +92,7 @@ namespace Appsuggest.Models
         public int Id { get; set; }
         [Required]
         [StringLength(50)]
+        [Display(Name = "Ad")]
         public string Name { get; set; }
     }
     public class ImageMetadata
@@ -93,9 +100,33 @@ namespace Appsuggest.Models
         [Key]
         public int Id { get; set; }
         [Required]
+        [Display(Name = "Linki")]
         public string Link { get; set; } 
         [Required]
-        public string Appid { get; set; }
+        [Display(Name = "Uygulama")]
+        public string AppId { get; set; }
+    } 
+    public class StateMetadata
+    {
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "Ad")]
+        public string Name { get; set; } 
+        
+    } 
+    public class CityMetadata
+    {
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "Ad")]
+        public string Name { get; set; } 
+        [Required]
+        [Display(Name = "İl")]
+        public string StateId { get; set; }
     }
     public class UserMetadata
     {

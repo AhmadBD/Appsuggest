@@ -17,9 +17,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Detayları", "Edit", new {  name=item.Name,value=item.Value  }) |
+            @Html.ActionLink("Detayları", "Details", new {  name=item.Name,value=item.Value  }) |
+            @Html.ActionLink("Sil", "Delete", new { name = item.Name, value = item.Value })
         </td>
     </tr>
 }

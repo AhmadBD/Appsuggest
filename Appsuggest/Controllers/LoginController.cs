@@ -56,12 +56,22 @@ namespace Appsuggest.Controllers
             }
             return RedirectToAction("Login");
         }
+        
+        public List<SelectListItem> GetStateList()
+        {
+            using (var context = new appsuggestEntities1())
+            {
+                return context.States.Select(x =>
+                new SelectListItem { Text = x.Name, Value = x.Id.ToString() }).ToList();
+            }
+        }
         // GET: Register
         public ActionResult Register(string returnUrl = null)
         {
             if (Session["UserId"] != null)
                 return RedirectToAction("Index", "Home");
             ViewBag.returnUrl = returnUrl;
+            ViewBag.StateList = GetStateList();
             return View(new RegisterModel());
         }
         [HttpPost]
@@ -84,6 +94,7 @@ namespace Appsuggest.Controllers
                     FirstName = registerModel.FirstName,
                     LastName = registerModel.LastName,
                     Phone = registerModel.Phone,
+                    CityId = registerModel.CityId,
                     IsAdmin = false
                 };
                 context.Users.Add(usr);

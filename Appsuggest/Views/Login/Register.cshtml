@@ -55,55 +55,68 @@
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input name="FirstName" type="text" class="form-control form-control-user" id="exampleFirstName"
                                                placeholder="Ad">
-                                        @Html.ValidationMessageFor(a => a.FirstName)
+                                        @Html.ValidationMessage("FirstName")
                                     </div>
                                     <div class="col-sm-6">
                                         <input name="LastName" type="text" class="form-control form-control-user" id="exampleLastName"
                                                placeholder="Soyad">
-                                        @Html.ValidationMessageFor(a => a.LastName)
+                                        @Html.ValidationMessage("LastName")
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+
+                                        @Html.DropDownList("StateId", (IEnumerable<SelectListItem>)ViewBag.StateList, "İl", new { @class = "form-control form-control-user", @required = "required" })
+                                        @Html.ValidationMessage("StateId")
+                                    </div>
+                                    <div class="col-sm-6">
+
+                                        @Html.DropDownList("CityId", new SelectList(""), "İlçe", new { @class = "form-control form-control-user" })
+                                        @Html.ValidationMessage("CityId")
 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <input name="Email" type="email" class="form-control form-control-user" id="exampleInputEmail"
                                            placeholder="E-Posta">
-                                    @Html.ValidationMessageFor(a => a.Email)
+                                    @Html.ValidationMessage("Email")
 
-                                </div> 
+                                </div>
                                 <div class="form-group">
                                     <input name="Phone" type="tel" class="form-control form-control-user" id="exampleInputPhone"
                                            placeholder="telefon">
-                                    @Html.ValidationMessageFor(a => a.Phone)
+                                    @Html.ValidationMessage("Phone")
 
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input name="Password" type="password" class="form-control form-control-user"
                                                id="exampleInputPassword" placeholder="Parola">
-                                        @Html.ValidationMessageFor(a => a.Password)
+                                        @Html.ValidationMessage("Password")
 
                                     </div>
                                     <div class="col-sm-6">
                                         <input name="Password2" type="password" class="form-control form-control-user"
                                                id="exampleRepeatPassword" placeholder="Parola Tekrarı">
-                                        @Html.ValidationMessageFor(a => a.Password2)
+                                        @Html.ValidationMessage("Password2")
 
                                     </div>
                                 </div>
                                 <input type="submit" value="Uye Ol" class="btn btn-primary btn-user btn-block">
-                                   
+
                                 <hr>
                                 @*<a href="index.html" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google
-                                </a>
-                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                </a>*@
+                                        <i class="fab fa-google fa-fw"></i> Register with Google
+                                    </a>
+                                    <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                        <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                                    </a>*@
                             </form>
                             <hr>
                             @*<div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
-                            </div>*@
+                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                </div>*@
                             <div class="text-center">
                                 <a class="small" href="@Url.Action("Login","Login")">Zaten hesabınız var mı? Giriş yap!</a>
                             </div>
@@ -124,7 +137,29 @@
 
     <!-- Custom scripts for all pages-->
     <script src="~/Content/Admin/js/sb-admin-2.min.js"></script>
+   
+        <script>
+            $(document).ready(function () {
+                $("#StateId").change(function () {
+                    var id = $(this).val();
+                    var CityList = $("#CityId");
+                    CityList.empty();
+                    $.ajax({
+                        url: '/Home/GetCityList',
+                        type: 'get',
+                        dataType: 'json',
+                        data: { 'id': id },
+                        success: function (data) {
+                            $.each(data, function (index, option) {
+                                CityList.append('<option value="' + option.Value + '" >' + option.Text + '</option>');
+                            })
+                        }
+                    });
+                });
+            });
+        </script>
 
+    
 </body>
 
 </html>

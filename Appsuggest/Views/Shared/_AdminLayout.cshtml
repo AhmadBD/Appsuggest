@@ -39,7 +39,7 @@
             <a class="sidebar-brand d-flex align-items-center justify-content-center " href="@Url.Action( "Index","Home")">
                 <div class="sidebar-brand-icon ">
                     @*<i class="fas fa-laugh-wink"></i>*@
-                    <object  data="~/Content/drawing2.svg" width="100"> </object>
+                    <object data="~/Content/drawing2.svg" width="100"> </object>
                 </div>
                 @*<div class="sidebar-brand-text mx-3">Apps Suggest</div>*@
             </a>
@@ -79,7 +79,7 @@
                         <a class="collapse-item" href="@Url.Action("Index","Providers")">Uygulama Üreticileri</a>
                         <a class="collapse-item" href="@Url.Action("Index","Reviews")">Uygulama Yorumları</a>
                         <a class="collapse-item" href="@Url.Action("Index","Images")">Uygulama Resimleri</a>
-                   
+
                     </div>
                 </div>
             </li>
@@ -94,14 +94,14 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","Users")" >
+                <a class="nav-link" href="@Url.Action("Index","Users")">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Kullanıcılar</span>
                 </a>
-               
+
             </li>
 
-        
+
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -111,15 +111,26 @@
                 Site Ayarları
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("Index","Configs")" >
+            
+            <!-- Nav Item - Ayarları Collapse Menu -->
+            <li class="nav-item active">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAyarları"
+                   aria-expanded="false" aria-controls="collapseAyarları">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Ayarları</span>
                 </a>
+                <div id="collapseAyarları" class="collapse" aria-labelledby="headingAyarları" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Ayarları:</h6>
+                        <a class="collapse-item" href="@Url.Action("Index","Configs")">Ayarları</a>
+                        <a class="collapse-item" href="@Url.Action("Index","States")">İl Listesi</a>
+                        <a class="collapse-item" href="@Url.Action("Index","Cities")">İlçe Listesi</a>
+
+
+                    </div>
+                </div>
             </li>
 
-           
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
