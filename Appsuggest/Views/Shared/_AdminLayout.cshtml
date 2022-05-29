@@ -24,6 +24,7 @@
 
     <!-- Custom styles for this template-->
     <link href="~/Content/Admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="~/Content/Admin/css/site.css" rel="stylesheet">
 
 </head>
 
@@ -36,12 +37,13 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center " href="@Url.Action( "Index","Home")">
-                <div class="sidebar-brand-icon ">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center  " href="@Url.Action( "Index","Home")">
+                <!--<div class="sidebar-brand-icon ">-->
                     @*<i class="fas fa-laugh-wink"></i>*@
-                    <object data="~/Content/drawing2.svg" width="100"> </object>
-                </div>
+                    <!--<object data="~/Content/drawing2.svg" width="100"> </object>
+                </div>-->
                 @*<div class="sidebar-brand-text mx-3">Apps Suggest</div>*@
+                <div class="admin-logo"></div>
             </a>
 
             <!-- Divider -->
