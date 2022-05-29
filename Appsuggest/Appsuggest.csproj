@@ -1920,6 +1920,7 @@
     <Content Include="Content\drawing.svg" />
     <Content Include="Content\drawing2.svg" />
     <Content Include="Content\index.html" />
+    <Content Include="Content\item.html" />
     <Content Include="Content\js\scripts.js" />
     <Content Include="db.sql" />
     <Content Include="favicon.ico" />
@@ -2177,6 +2178,7 @@
     <Content Include="Views\Cities\Details.cshtml" />
     <Content Include="Views\Cities\Edit.cshtml" />
     <Content Include="Views\Cities\Index.cshtml" />
+    <Content Include="Views\Apps\DetailsClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

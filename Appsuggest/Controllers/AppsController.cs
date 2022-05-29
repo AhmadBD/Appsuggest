@@ -45,6 +45,22 @@ namespace Appsuggest.Controllers
             }
             return View(app);
         }
+        // GET: Apps/Details/5
+        public async Task<ActionResult> DetailsClient(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            App app = await db.Apps.Include(a => a.AppPlatform).Include(a => a.Images)
+                .Include(a => a.AppType).Include(a => a.Provider).FirstOrDefaultAsync(a=>a.Id==id);
+            if (app == null)
+            {
+                return HttpNotFound();
+            }
+            app.RelatedApps = db.Apps.Where(a => (a.AppTypeId == app.AppTypeId || a.Tags.Contains(app.AppType.Name)) && a.Id != app.Id).Take(4).ToList() ;
+            return View(app);
+        }
 
         // GET: Apps/Create
         public ActionResult Create()

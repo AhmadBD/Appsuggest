@@ -14,19 +14,21 @@
     border-right: none;
     outline: none;
     font-size: 15px;
-    color: tomato;
+    color: #111d5e;
     background: none;
+    margin-left: 2px;
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 .search-toggles {
-   
     padding: 10px;
     border: 4px solid #111d5e;
-    border-radius: 10px ;
-    
+    border-radius: 10px;
     outline: none;
     font-size: 15px;
-    color: tomato;
+    color: #111d5e;
     background: none;
+    margin: 2px;
 }
 
 .search-button {
@@ -41,4 +43,23 @@
     background: none;
     font-size: 20px;
     border-left: 4px solid #111d5e;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+.clickable {
+    cursor: pointer;
+    background: #fff;
+}
+
+.clickable {
+    transition: box-shadow .3s;
+   
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background: #fff;
+    float: left;
+}
+
+.clickable:hover {
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
 }

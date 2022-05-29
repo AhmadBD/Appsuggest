@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Appsuggest.Models
 {
@@ -14,6 +15,8 @@ namespace Appsuggest.Models
         public string ProviderName { get { return Provider.Name; } }
         public string AppTypeName { get { return AppType.Name; } }
         public string AppPlatformName { get { return AppPlatform.Name; } }
+        [NotMapped]
+        public IEnumerable<App> RelatedApps { get; set; }
     }
     [MetadataType(typeof(AppTypeMetadata))]
     public partial class AppType

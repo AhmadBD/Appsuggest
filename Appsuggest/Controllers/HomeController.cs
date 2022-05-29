@@ -25,7 +25,7 @@ namespace Appsuggest.Controllers
                     a.Tags.Contains(homeSearchViewModel.Search)));
             }
             else { homeSearchViewModel = new HomeSearchViewModel(); }
-                homeSearchViewModel.Apps = apps.ToList();
+                homeSearchViewModel.Apps = apps.Take(12).ToList();
                 homeSearchViewModel.AppPlatformList = GetAppPlatformList();
                 homeSearchViewModel.AppTypeList = GetAppTypeList();
                 homeSearchViewModel.ProviderList = GetProviderList();
