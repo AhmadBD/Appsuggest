@@ -48,7 +48,6 @@
         <EntityType Name="Config">
           <Key>
             <PropertyRef Name="Name" />
-            <PropertyRef Name="Value" />
           </Key>
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Value" Type="nvarchar" MaxLength="255" Nullable="false" />
@@ -253,7 +252,6 @@
           <EntitySet Name="AppPlatforms" EntityType="appsuggestModel.AppPlatform" />
           <EntitySet Name="Apps" EntityType="appsuggestModel.App" />
           <EntitySet Name="AppTypes" EntityType="appsuggestModel.AppType" />
-          <EntitySet Name="Configs" EntityType="appsuggestModel.Config" />
           <EntitySet Name="Images" EntityType="appsuggestModel.Image" />
           <EntitySet Name="Providers" EntityType="appsuggestModel.Provider" />
           <EntitySet Name="Reviews" EntityType="appsuggestModel.Review" />
@@ -292,6 +290,7 @@
             <End Role="City" EntitySet="Cities" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="Configs" EntityType="appsuggestModel.Config" />
         </EntityContainer>
         <EntityType Name="AppPlatform">
           <Key>
@@ -331,14 +330,6 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Apps" Relationship="appsuggestModel.FK_Apps_AppTypes" FromRole="AppType" ToRole="App" />
-        </EntityType>
-        <EntityType Name="Config">
-          <Key>
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Value" />
-          </Key>
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Value" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Image">
           <Key>
@@ -505,6 +496,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -543,14 +541,6 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Configs">
-            <EntityTypeMapping TypeName="appsuggestModel.Config">
-              <MappingFragment StoreEntitySet="Config">
-                <ScalarProperty Name="Value" ColumnName="Value" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -616,6 +606,14 @@
               <MappingFragment StoreEntitySet="States">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Configs">
+            <EntityTypeMapping TypeName="appsuggestModel.Config">
+              <MappingFragment StoreEntitySet="Config">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

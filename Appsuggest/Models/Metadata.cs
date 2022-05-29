@@ -128,6 +128,19 @@ namespace Appsuggest.Models
         [Display(Name = "İl")]
         public string StateId { get; set; }
     }
+    public class ConfigMetadata
+    {
+        [Key]
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "Ad")]
+        public int Name { get; set; }
+        [Required]
+        [StringLength(255)]
+        [Display(Name = "Değer")]
+        public string Value { get; set; } 
+      
+    }
     public class UserMetadata
     {
         [Key]
@@ -146,6 +159,10 @@ namespace Appsuggest.Models
         public string Phone { get; set; }
         [Required]
         public bool IsAdmin { get; set; }
+       
+        public bool CityId { get; set; }
+        
+        public DateTime BirthDate { get; set; }
     }
 
 

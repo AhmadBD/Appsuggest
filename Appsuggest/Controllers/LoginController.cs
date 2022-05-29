@@ -75,7 +75,8 @@ namespace Appsuggest.Controllers
             return View(new RegisterModel());
         }
         [HttpPost]
-        public ActionResult Register(RegisterModel registerModel)
+        public ActionResult Register([ModelBinder(typeof(ModelBinders.DateModelBinder<RegisterModel>))] 
+            RegisterModel registerModel)
         {
             if (!ModelState.IsValid)
                 return View(registerModel);
@@ -95,6 +96,7 @@ namespace Appsuggest.Controllers
                     LastName = registerModel.LastName,
                     Phone = registerModel.Phone,
                     CityId = registerModel.CityId,
+                    BirthDate = registerModel.Date,
                     IsAdmin = false
                 };
                 context.Users.Add(usr);

@@ -28,12 +28,12 @@ namespace Appsuggest.Models
         public virtual DbSet<AppPlatform> AppPlatforms { get; set; }
         public virtual DbSet<App> Apps { get; set; }
         public virtual DbSet<AppType> AppTypes { get; set; }
-        public virtual DbSet<Config> Configs { get; set; }
         public virtual DbSet<Image> Images { get; set; }
         public virtual DbSet<Provider> Providers { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<State> States { get; set; }
+        public virtual DbSet<Config> Configs { get; set; }
     }
 }

@@ -50,6 +50,10 @@ namespace Appsuggest.Models
     public partial class User
     {
     }
+    [MetadataType(typeof(ConfigMetadata))]
+    public partial class Config
+    {
+    }
 
     
 }

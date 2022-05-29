@@ -56,14 +56,14 @@ namespace Appsuggest.Controllers
         }
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = db.Configs.Find("Hakkında mesaj").Value?? "Your application description page.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = db.Configs.Find("Bize Ulaşın").Value??"Your contact page.";
 
             return View();
         }

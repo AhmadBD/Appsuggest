@@ -60,13 +60,13 @@ namespace Appsuggest.Controllers
         }
 
         // GET: Configs/Edit/5
-        public async Task<ActionResult> Edit(string id)
+        public async Task<ActionResult> Edit(string name)
         {
-            if (id == null)
+            if (name == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Config config = await db.Configs.FindAsync(id);
+            Config config = await db.Configs.FindAsync(name);
             if (config == null)
             {
                 return HttpNotFound();
@@ -91,13 +91,13 @@ namespace Appsuggest.Controllers
         }
 
         // GET: Configs/Delete/5
-        public async Task<ActionResult> Delete(string id)
+        public async Task<ActionResult> Delete(string name)
         {
-            if (id == null)
+            if (name == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Config config = await db.Configs.FindAsync(id);
+            Config config = await db.Configs.FindAsync(name);
             if (config == null)
             {
                 return HttpNotFound();
@@ -108,9 +108,9 @@ namespace Appsuggest.Controllers
         // POST: Configs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(string id)
+        public async Task<ActionResult> DeleteConfirmed(string name)
         {
-            Config config = await db.Configs.FindAsync(id);
+            Config config = await db.Configs.FindAsync(name);
             db.Configs.Remove(config);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

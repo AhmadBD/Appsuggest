@@ -149,6 +149,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\SecurePasswordHasher.cs" />
+    <Compile Include="ModelBinders\IHasDate.cs" />
+    <Compile Include="ModelBinders\RegisterModelBinder.cs" />
     <Compile Include="Models\App.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

@@ -1,9 +1,10 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-
+using Appsuggest.ModelBinders;
 namespace Appsuggest.Models
 {
-    public class RegisterModel
+    public class RegisterModel : IHasDate
     {
         [Required]
         [DisplayName("Kullanıcı Şifresi")]
@@ -32,5 +33,6 @@ namespace Appsuggest.Models
        
         
         public int? CityId { get;  set; }
+        public DateTime? Date { get;  set; }//birthDate
     }
 }
